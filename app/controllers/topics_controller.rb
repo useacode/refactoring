@@ -38,23 +38,18 @@ class TopicsController < ApplicationController
   # topic /topics
   # topic /topics.json
   def create
-    if params[:is_draft]
-      @topic = current_user.topics.create(topic_params)
-      if @topic.save
-        flash[:notice] = "Topic successfully save as draft."
-        redirect_to @topic
-      else
-        render 'new'
-      end
+    @topic = current_user.topics.new(topic_params)
+      if params[:is_draft]
+      message = 'Topic successfully save as draft.'
     else
-      @topic = current_user.topics.new(topic_params)
       @topic.is_draft = false
-      if @topic.save
-        flash[:success] = "Topic successfully published."
-        redirect_to @topic
-      else
-        render 'new'
-      end
+      @topic.created_at = Time.zone.now
+      message = 'Topic successfully published.'
+    end
+    if @topic.save
+      redirect_to @topic, notice: message
+    else
+      render 'new'
     end
   end
 
