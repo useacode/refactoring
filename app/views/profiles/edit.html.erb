@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'layouts/sidebar' %>
+  </div>
+
+  <div class="col-md-7 col-md-offset-1">
+    <div class="page-header">
+      <h3 class="text-primary">Edit Profile</h3>
+    </div>
+
+    <%= form_for @user, url: {action: "update"}, html: { multipart: true } do |f| %>
+      <div class="form-group">
+        <%= f.file_field :avatar, onChange:'loadFile(event)', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :about, rows: "8", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update Profile", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

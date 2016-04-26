@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'layouts/sidebar' %>
+  </div>
+
+  <div class="col-md-7 col-md-offset-1">
+    <h2><%= @topic.title %></h2>
+    <small class="block padding-b-custom">
+      Posted by <%= link_to @topic.user.username, profile_path(@topic.user.username)  %>
+      &nbsp;|&nbsp;
+      <%= time_ago_in_words(@topic.created_at) %> ago
+    </small>
+    <hr>
+    <article>
+      <%= markdown(@topic.body) %>
+    </article>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h3 class="text-primary">List of Ideas
+            <%= active_link_to(new_topic_idea_path(@topic.id), :active => :exact, class: "btn btn-primary pull-right") do %>
+              <%= icon('lightbulb-o fa-fw') %>&nbsp;New Idea
+            <% end %>
+          </h3>
+        </div>
+        <% if @topic.ideas.empty? %>
+          <h5>Opps! There is no idea posted for this topic yet.</h5>
+        <% else %>
+          <% @topic.ideas.order('created_at DESC').each do |idea| %>
+          <div class="well" id="idea_<%= idea.id %>">
+            <div class="row">
+              <div class="col-md-2">
+                <%= image_tag idea.user.avatar.url(:medium), class: 'img-circle' %>
+              </div>
+              <div class="col-md-10">
+                <h4>
+                  <%= link_to idea.title, idea_path(idea) %>
+                  <small class="pull-right middle">
+                    <%= time_ago_in_words(idea.created_at) %> ago
+
+                    <div class="dropdown pull-right">
+                      <a class="dropdown-toggle topic-settings-inverse" data-toggle="dropdown">
+                        <%= icon('circle-o fa-lg') %>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-header">More</li>
+                        <li>
+                          <%= link_to("#") do %>
+                            <%= icon('share fa-fw') %>&nbsp;Share Idea
+                          <% end %>
+                        </li>
+                        <% if idea.user_id == current_user.id %>
+                        <li class="dropdown-header">Topic Settings</li>
+                        <li>
+                          <%= link_to(edit_idea_path(idea)) do %>
+                            <%= icon('edit fa-fw') %>&nbsp;Edit Idea
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to(idea, method: :delete, data: { confirm: "Are You sure?" }, remote: true ) do %>
+                            <%= icon('trash-o fa-fw') %>&nbsp;Delete Idea
+                          <% end %>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </small>
+                </h4>
+                <%= active_link_to "like" do %>
+                  <%= icon('thumbs-o-up fa-fw') %>&nbsp;I like this idea
+                <% end %>
+                &nbsp;
+                <%= active_link_to "like" do %>
+                  <%= icon('thumbs-o-down fa-fw') %>&nbsp;I disagree
+                <% end %>
+                &nbsp;
+                <%= active_link_to "comment" do %>
+                  <%= icon('comment-o fa-fw') %>&nbsp;Comment
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,274 @@
+$brand-primary:               #684fb6 !default;
+$brand-success:               #2E7D32 !default;
+$brand-info:                  #0070FF !default;
+$brand-warning:               #FCB635 !default;
+$brand-danger:                #d55 !default;
+
+$jumbotron-bg:                transparent !default;
+
+$navbar-height:               60px;
+$navbar-default-bg:           $brand-primary !default;
+$navbar-default-brand-color:  #fff !default;
+$navbar-default-link-color:                #fff !default;
+$navbar-default-link-hover-color:          #fff !default;
+$navbar-default-link-active-color:         #fff !default;
+$navbar-default-link-active-bg:            $brand-primary !default;
+
+$panel-default-border:        transparent !default;
+$panel-footer-bg:             #fff !default;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 100px;
+}
+body > .container {
+  padding: 60px 15px 0;
+}
+canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -9999;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+      }
+
+nav > a {
+  padding: 0 15px;
+}
+
+#mycontainer {
+  padding-top: 77px;
+}
+
+/* Helpers
+-------------------------------------------------- */
+
+.center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.justify {
+  text-align: justify;
+}
+.jumbotron {
+  margin: 130px 0 110px 0;
+}
+.padding-h {
+  padding: 0 20px;
+}
+.padding-v {
+  padding: 20px 0;
+}
+.padding-v-custom {
+  padding: 16px 0;
+}
+.padding-b {
+  padding: 0 0 20px 0;
+}
+.padding-b-custom {
+  padding: 4px 0 4px 0;
+}
+.padding-t {
+  padding: 20px 0 0 0;
+}
+.float-up {
+  display: table-row;
+}
+.inline {
+  display: inline !important;
+}
+.inline-block {
+  display: inline-block !important;
+}
+.block {
+  display: block;
+}
+.middle {
+  padding-top: 2px;
+}
+.topic-profile-link {
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+.topic-settings {
+  padding: 0 0 0 10px;
+  color: #fff !important;
+  &:hover, &:visited {
+    cursor: pointer;
+    color: #eee !important;
+  }
+}
+.topic-settings-inverse {
+  padding: 0 0 0 10px;
+  color: $brand-primary !important;
+  &:hover, &:visited {
+    cursor: pointer;
+    color: $brand-primary !important;
+  }
+}
+.smaller {
+  font-size: 80% !important;
+}
+.panel-footer {
+  border-top: none;
+}
+.sidebar-padding-top {
+  padding-top: 16px;
+}
+/* Custom Button Outline
+-------------------------------------------------- */
+
+.btn.outline {
+    background: transparent;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid $brand-primary;
+    color: $brand-primary;
+}
+.btn-primary.outline:hover {
+    border: 2px solid $brand-primary;
+    background: $brand-primary;
+    color: #fff;
+}
+
+#error_explanation {
+    color: $brand-danger;
+    h2 {
+      font-size: 24px;
+    }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $brand-danger;
+  }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  position: absolute;
+  background: $brand-primary;
+  color: #fff;
+  padding: 20px 0;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  a {
+    color: #fff;
+  }
+}
+
+/* Custom Pace
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #fff;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 3px;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 3px transparent;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-radius: 10px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+  0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+  0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+  0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+/* Custom Searchbox
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.search-btn {
+  position: absolute;
+  top: 12px;
+  left: 355px;
+  i{
+    color: $brand-primary;
+  }
+}

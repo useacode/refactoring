@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aidia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+<body>
+  <div class="pace pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);"></div>
+    <div class="pace-progress-inner"></div>
+  </div>
+  <%= render 'layouts/nav' %>
+
+  <div class="container animated fadeIn" id="mycontainer">
+    <%= render 'layouts/flash' %>
+    <%= yield %>
+  </div>
+
+  <%= render 'layouts/footer' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= render "layouts/canvas" if current_page?(root_path) %>
+
+</body>
+</html>

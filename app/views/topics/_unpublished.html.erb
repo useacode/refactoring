@@ -1,0 +1,56 @@
+<% @unpublished_topics.each do |topic| %>
+<div class="panel panel-primary topic" id="topic_<%= topic.id %>">
+  <div class="panel-heading">
+    <%= image_tag topic.user.avatar.url(:small), class: 'img-circle' %>
+    &nbsp;<%= link_to topic.user.username, profile_path(topic.user.username), class: "topic-profile-link" %>
+    <small class="pull-right middle">
+      <%= time_ago_in_words(topic.created_at) %> ago
+
+      <div class="dropdown pull-right">
+        <a class="dropdown-toggle topic-settings" data-toggle="dropdown">
+          <%= icon('circle-o fa-lg') %>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">More</li>
+          <li>
+            <%= link_to("#") do %>
+              <%= icon('share fa-fw') %>&nbsp;Share topic
+            <% end %>
+          </li>
+          <% if topic.user.id == current_user.id %>
+          <li class="dropdown-header">Topic Settings</li>
+          <li>
+            <%= link_to(edit_topic_path(topic)) do %>
+              <%= icon('edit fa-fw') %>&nbsp;Edit topic
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(topic, method: :delete, data: { confirm: "Are you sure?" }, remote: true ) do %>
+              <%= icon('trash-o fa-fw') %>&nbsp;Delete topic
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </small>
+
+  </div>
+  <div class="panel-body">
+    <h4><%= link_to topic.title, topic_path(topic.id) %></h4>
+    <div class="justify">
+      <% if topic.body.length > 200 %>
+        <%= truncate(topic.body, length: 200) %>
+        <%= link_to 'Read more', topic_path(topic) %>
+      <% else %>
+        <%= topic.body %>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <%= link_to(new_topic_idea_path(topic), class: "campaign-icon") do %>
+      <%= icon('lightbulb-o fa-lg') %> Share Your Idea
+    <% end %>
+  </div>
+</div>
+<% end %>

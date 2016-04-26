@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-3 padding-v-custom">
+    <%= render 'sidebar' %>
+  </div>
+
+  <div class="col-md-7 col-md-offset-1">
+    <div class="page-header">
+      <h1 class="text-primary">Support&nbsp;<small>sometimes you just need a little help</small></h1>
+    </div>
+    <div class="padding-v">
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <%= active_link_to(support_howto_path) do %>
+            <%= icon('bars fa-fw') %>&nbsp;How to use Aidia
+          <% end %>
+        </li>
+        <li>
+          <%= active_link_to(support_write_path) do %>
+            <%= icon('bars fa-fw') %>&nbsp;Writing on Aidia
+          <% end %>
+        </li>
+        <li>
+          <%= active_link_to(support_report_path) do %>
+            <%= icon('bars fa-fw') %>&nbsp;Report Issue
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

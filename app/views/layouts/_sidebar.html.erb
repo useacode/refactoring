@@ -1,0 +1,42 @@
+<h4 class="inline-block padding-h">
+  <%= image_tag current_user.avatar.url(:medium), class: 'img-circle' %>
+  &nbsp;
+  <%= active_link_to(profile_path(current_user.username)) do %>
+    <%= current_user.username %>
+  <% end %>
+</h4>
+
+<div class="list-group sidebar-padding-top">
+
+  <%= active_link_to(feedline_path, class: "list-group-item") do %>
+    <%= icon('bars fa-fw') %>&nbsp;Feedline
+  <% end %>
+  <%= active_link_to(new_topic_path, :active => :exact, class: "list-group-item") do %>
+    <%= icon('pencil fa-fw') %>&nbsp;New Topic
+  <% end %>
+  <%= active_link_to(my_topic_path, class: "list-group-item") do %>
+    <%= icon('edit fa-fw') %>&nbsp;My Topic
+  <% end %>
+  <%= active_link_to(my_idea_path, class: "list-group-item") do %>
+    <%= icon('lightbulb-o fa-fw') %>&nbsp;My Idea
+  <% end %>
+
+</div>
+
+<div class="list-group">
+  <%= active_link_to("ha", class: "list-group-item") do %>
+    <%= icon('trophy fa-fw') %>&nbsp;Leaderboard
+  <% end %>
+  <%= active_link_to("ha", class: "list-group-item") do %>
+    <%= icon('flag fa-fw') %>&nbsp;Idea In Action
+  <% end %>
+  <%= active_link_to("ha", class: "list-group-item") do %>
+    <%= icon('flag-checkered  fa-fw') %>&nbsp;Top All Time
+  <% end %>
+</div>
+
+<div class="list-group">
+  <%= active_link_to(support_path, class: "list-group-item", target: "_blank") do %>
+    <%= icon('exclamation fa-fw') %>&nbsp;Support
+  <% end %>
+</div>

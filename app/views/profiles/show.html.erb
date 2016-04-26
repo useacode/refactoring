@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-3 padding-v">
+    <%= image_tag @user.avatar.url(:large), class: 'img-responsive img-thumbnail' %>
+    <h3><%= @user.username %></h3>
+    <p>
+      <%= @user.about %>
+    </p>
+    <p>
+      <%= icon('bars fa-fw') %>&nbsp;<%= pluralize @user.topics.count, 'Post' %>
+    </p>
+    <p>
+      <%= icon('lightbulb-o fa-fw') %>&nbsp;<%= pluralize @user.ideas.count, 'Idea' %>
+    </p>
+  </div>
+
+  <div class="col-md-7 col-md-offset-1">
+    <div class="page-header">
+      <h3 class="text-primary">My Topic
+        <% if @user.username == current_user.username %>
+          <%= active_link_to(new_topic_path, :active => :exact, class: "btn btn-primary pull-right") do %>
+            <%= icon('pencil fa-fw') %>&nbsp;New Topic
+          <% end %>
+        <% end %>
+      </h3>
+    </div>
+    <%= render 'topics/topics' %>
+  </div>
+</div>
